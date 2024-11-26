@@ -31,15 +31,22 @@ public class RevenuePageTest extends TestBase {
 	}
 
 	@Test(priority = 1)
-	public void validate_slider_range_value_By_updating_textbox_value() {
+	public void validate_slider_range_value_By_updating_textbox_value_test() {
 		revenuePage.scrollDownToSlider();
 		revenuePage.updateInputBoxValue("560");
 		String actualValue = revenuePage.getTheRangeValueFromSlider();
 		Assert.assertEquals(actualValue, "560");
 	}
 
-	@Test(priority = 2, dataProvider = "jsonData")
-	public void validate_total_reimbursement_by_selecting_cptcode(List<String> cptCodes, List<String> rangeValue,
+	@Test(priority = 2)
+	public void verify_text_field_by_adjusting_slider_test() {
+		revenuePage.scrollDownToSlider();
+		String actualTextFieldValue = revenuePage.adjustSliderRange();
+		Assert.assertEquals(actualTextFieldValue, "820");
+	}
+
+	@Test(priority = 3, dataProvider = "jsonData")
+	public void validate_total_reimbursement_by_selecting_cptcode_test(List<String> cptCodes, List<String> rangeValue,
 			String reimbursementMonth) {
 		revenuePage.scrollDownToSlider();
 		revenuePage.updateInputBoxValue(rangeValue.get(1));

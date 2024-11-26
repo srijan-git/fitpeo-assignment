@@ -3,6 +3,7 @@ package com.fitpeo.assignment.pages;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -36,6 +37,9 @@ public class RevenuePage extends TestBase {
 	@FindBy(xpath = "//p[contains(text(),'Per Month:')]//p")
 	WebElement reimbursementPerMonthElement;
 
+	@FindBy(css = ".css-1sfugkh")
+	WebElement sliderBallElement;
+
 	public RevenuePage() {
 		PageFactory.initElements(driver, this);
 	}
@@ -47,9 +51,13 @@ public class RevenuePage extends TestBase {
 	public void scrollToCptCodes() {
 		actions.moveToElement(cptCodeElement).build().perform();
 	}
-	
-	public void setSliderRange() {
-		
+
+	public String adjustSliderRange() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].setAttribute('step', arguments[1]);", inputRangeElement, 820);
+		inputRangeElement.sendKeys(Keys.ARROW_UP);
+		String textFieldValue = inputBoxElement.getAttribute("value");
+		return textFieldValue;
 	}
 
 	public void updateInputBoxValue(String totalIndividualPatient) {
