@@ -1,0 +1,34 @@
+# Maven output
+/target/
+
+# IntelliJ IDEA
+/.idea/
+/*.iml
+
+# Eclipse
+/.classpath
+/.project
+/.settings/
+
+# VS Code
+/.vscode/
+
+# Logs and reports
+/logs/
+/reports/
+/test-output/  # TestNG output folder
+/screenshots/
+/downloads/
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Selenium-specific
+/screenshots/
+/downloads/
